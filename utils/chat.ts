@@ -6,7 +6,7 @@ import { isUndefined, pick } from 'lodash-es'
 import { HarmCategory, HarmBlockThreshold } from '@google/generative-ai'
 
 export const generationConfig = {
-  // maxOutputTokens: 4000,
+  // maxOutputTokens: 8000,
   temperature: 0.6,
   topP: 0.8,
   // topK: 16,
@@ -15,19 +15,19 @@ export const generationConfig = {
 export const safetySettings = [
   {
     category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
   },
   {
     category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
   },
   {
     category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
   },
   {
     category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
   },
 ]
 
@@ -42,7 +42,7 @@ export type RequestProps = {
 export default function chat({
   messages = [],
   systemInstruction,
-  model = Model['Gemini Pro'],
+  model = Model['Gemini 1.5 Flash'],
   apiKey,
   baseUrl,
 }: RequestProps) {
